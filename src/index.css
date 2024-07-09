@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Outfit Variable', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  border: 3px solid #1f6c6e;
+  box-shadow: 0 0 5px 5px rgba(34, 118, 121, 0.5) inset;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.534);
+}

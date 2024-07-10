@@ -12,8 +12,8 @@ const DashboardLayout = () => {
         className={`${
           shrink
             ? 'w-[calc(100vw-90px)] ml-[90px]'
-            : 'w-[calc(100vw-15vw)] ml-[15vw] transition-all duration-300'
-        } `}
+            : 'w-[calc(100vw-15vw)] ml-[15vw]'
+        } transition-all duration-300`}
       >
         <Outlet />
       </main>

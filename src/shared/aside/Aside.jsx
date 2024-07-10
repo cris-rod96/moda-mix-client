@@ -19,7 +19,7 @@ const Aside = ({ toggleShrink, shrink }) => {
       } bg-primary border-r border-gray-500/20 flex flex-col transition-all duration-300`}
     >
       <header
-        className={`p-8 flex ${
+        className={`p-5 flex ${
           shrink ? 'flex-col gap-2' : 'flex-row'
         } items-center justify-between bg-secondary text-gray-300 border-b border-gray-500/20 transition-all duration-300`}
       >

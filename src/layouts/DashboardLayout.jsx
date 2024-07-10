@@ -10,8 +10,10 @@ const DashboardLayout = () => {
       <Aside toggleShrink={toggleShrink} shrink={shrink} />
       <main
         className={`${
-          shrink ? 'pl-[90px]' : 'pl-[13vw] transition-all duration-300'
-        } bg-black text-gray-300 `}
+          shrink
+            ? 'w-[calc(100vw-90px)] ml-[90px]'
+            : 'w-[calc(100vw-15vw)] ml-[15vw] transition-all duration-300'
+        } `}
       >
         <Outlet />
       </main>

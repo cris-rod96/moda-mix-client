@@ -12,6 +12,7 @@ import SpanishFlag from '../../assets/icon/SpanishFlag';
 import { HiArrowTrendingUp } from 'react-icons/hi2';
 import { LuClock } from 'react-icons/lu';
 import CountUp from 'react-countup';
+import ReactECharts from 'echarts-for-react';
 
 const Dashboard = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -196,82 +197,18 @@ const Dashboard = () => {
           </article>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-10 mt-10">
-          <article className="relative h-72 border px-5 rounded-lg group flex flex-col justify-between">
-            <div>
-              <div className="w-full h-44 mx-auto relative -top-4 rounded-xl flex flex-col justify-end items-center">
-                {/* Graphic */}
-                <div className="absolute w-full h-full bg-pink-500 rounded-xl transition-all duration-300 group-hover:-translate-y-8 cursor-pointer"></div>
-
-                <button className="text-primary">
-                  <BiRefresh size={22} />
-                </button>
-              </div>
-              <div>
-                <h3 className="text-primary text-lg tracking-tighter">
-                  Ventas semanales
-                </h3>
-                <h5 className="text-sm text-gray-300 tracking-tighter">
-                  Resultados de la última semana
-                </h5>
-              </div>
-            </div>
-            <footer className="border-t border-gray-500/20 py-3 w-full flex items-center gap-1 text-gray-400">
-              <LuClock />
-              <p className="text-[10px]">Actualizado hace 10 minutos</p>
-            </footer>
-          </article>
-
-          <article className="relative h-72 border px-5 rounded-lg group flex flex-col justify-between">
-            <div>
-              <div className="w-full h-44 mx-auto relative -top-4 rounded-xl flex flex-col justify-end items-center">
-                {/* Graphic */}
-                <div className="absolute w-full h-full bg-blue-600 rounded-xl transition-all duration-300 group-hover:-translate-y-8 cursor-pointer"></div>
-
-                <button className="text-primary">
-                  <BiRefresh size={22} />
-                </button>
-              </div>
-              <div>
-                <h3 className="text-primary text-lg tracking-tighter">
-                  Ventas semanales
-                </h3>
-                <h5 className="text-sm text-gray-300 tracking-tighter">
-                  Resultados de la última semana
-                </h5>
-              </div>
-            </div>
-            <footer className="border-t border-gray-500/20 py-3 w-full flex items-center gap-1 text-gray-400">
-              <LuClock />
-              <p className="text-[10px]">Actualizado hace 10 minutos</p>
-            </footer>
-          </article>
-
-          <article className="relative h-72 border px-5 rounded-lg group flex flex-col justify-between">
-            <div>
-              <div className="w-full h-44 mx-auto relative -top-4 rounded-xl flex flex-col justify-end items-center">
-                {/* Graphic */}
-                <div className="absolute w-full h-full bg-green-700 rounded-xl transition-all duration-300 group-hover:-translate-y-8 cursor-pointer"></div>
-
-                <button className="text-primary">
-                  <BiRefresh size={22} />
-                </button>
-              </div>
-              <div>
-                <h3 className="text-primary text-lg tracking-tighter">
-                  Ventas semanales
-                </h3>
-                <h5 className="text-sm text-gray-300 tracking-tighter">
-                  Resultados de la última semana
-                </h5>
-              </div>
-            </div>
-            <footer className="border-t border-gray-500/20 py-3 w-full flex items-center gap-1 text-gray-400">
-              <LuClock />
-              <p className="text-[10px]">Actualizado hace 10 minutos</p>
-            </footer>
-          </article>
+        {/* Tables */}
+        <div className="grid grid-cols-2 gap-5 h-96">
+          <div className="border border-gray-500/20 rounded-lg">
+            <header className="flex justify-between items-center px-10 py-5">
+              <h3 className="font-bold">Transacciones recientes</h3>
+              <input
+                type="text"
+                className="outline-0 px-3 py-2 border border-gray-500/20  rounded-lg text-sm w-[300px] bg-gray-500/10 text-gray-500"
+              />
+            </header>
+          </div>
+          <div className="border border-gray-500/20 rounded-lg"></div>
         </div>
       </section>
     </main>

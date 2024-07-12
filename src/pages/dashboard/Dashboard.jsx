@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BiCart, BiRefresh, BiSearchAlt, BiUser } from 'react-icons/bi';
+import { BiCart, BiSearchAlt, BiUser } from 'react-icons/bi';
 import { FaPowerOff, FaUser } from 'react-icons/fa';
 import {
   MdAttachMoney,
@@ -10,9 +10,7 @@ import { NavLink } from 'react-router-dom';
 import KingdomFlag from '../../assets/icon/KingdomFlag';
 import SpanishFlag from '../../assets/icon/SpanishFlag';
 import { HiArrowTrendingUp } from 'react-icons/hi2';
-import { LuClock } from 'react-icons/lu';
 import CountUp from 'react-countup';
-import ReactECharts from 'echarts-for-react';
 
 const Dashboard = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -42,7 +40,7 @@ const Dashboard = () => {
         if (switchLanguage) closeSwitchLanguage();
       }}
     >
-      <header className="w-full h-20 border-b border-gray-500/10 flex items-center justify-between px-10 relative gap-5">
+      <header className="w-full h-20 border-b border-gray-500/10 flex items-center justify-between px-10 relative gap-5 bg-white">
         <div className="flex items-center border border-gray-500/10 focus-within:border-gray-500/20 rounded-lg overflow-hidden">
           <div className="w-10 flex items-center justify-center ">
             <BiSearchAlt size={24} className="text-gray-300" />
@@ -198,15 +196,80 @@ const Dashboard = () => {
         </div>
 
         {/* Tables */}
-        <div className="grid grid-cols-2 gap-5 h-96">
-          <div className="border border-gray-500/20 rounded-lg">
-            <header className="flex justify-between items-center px-10 py-5">
-              <h3 className="font-bold">Transacciones recientes</h3>
-              <input
-                type="text"
-                className="outline-0 px-3 py-2 border border-gray-500/20  rounded-lg text-sm w-[300px] bg-gray-500/10 text-gray-500"
-              />
+        <div className="grid grid-cols-2 gap-5 h-[510px]">
+          <div className="border border-gray-500/20 rounded-lg h-full overflow-y-auto bg-white">
+            <header className="flex justify-center items-center px-10 pt-5">
+              <h3 className="font-bold uppercase text-lg">
+                Transacciones recientes
+              </h3>
             </header>
+
+            {/* Table */}
+            <table className="flex flex-col px-10 pt-2">
+              <thead className="w-full">
+                <tr className="w-full flex justify-between items-center border-b border-gray-500/20 py-5 [&>th]:text-th [&>th]:font-light [&>th]:text-left">
+                  <th className="w-2/5">Nombre</th>
+                  <th className="w-1/5">Fecha</th>
+                  <th className="w-1/5">Monto</th>
+                  <th className="w-1/5">Estado</th>
+                </tr>
+              </thead>
+              <tbody className="w-full">
+                <tr className="w-full flex justify-between items-center py-5 border-b border-gray-500/20  [&>td]:text-left">
+                  <td className="w-2/5">Cristhian Rodríguez</td>
+                  <td className="w-1/5 font-light">20.10.2024</td>
+                  <td className="w-1/5 font-light">$ 1500.20</td>
+                  <td className="w-1/5 font-light ">
+                    <span className="px-2 py-1 bg-green-400 text-green-800 rounded-md">
+                      Pagado
+                    </span>
+                  </td>
+                </tr>
+                <tr className="w-full flex justify-between items-center py-5 border-b border-gray-500/20  [&>td]:text-left">
+                  <td className="w-2/5">Cristhian Rodríguez</td>
+                  <td className="w-1/5 font-light">20.10.2024</td>
+                  <td className="w-1/5 font-light">$ 1500.20</td>
+                  <td className="w-1/5 font-light ">
+                    <span className="px-2 py-1 bg-yellow-300 text-yellow-800 rounded-md">
+                      Pendiente
+                    </span>
+                  </td>
+                </tr>
+                <tr className="w-full flex justify-between items-center py-5 border-b border-gray-500/20  [&>td]:text-left">
+                  <td className="w-2/5">Cristhian Rodríguez</td>
+                  <td className="w-1/5 font-light">20.10.2024</td>
+                  <td className="w-1/5 font-light">$ 1500.20</td>
+                  <td className="w-1/5 font-light ">
+                    <span className="px-2 py-1 bg-gray-400 text-gray-800 rounded-md">
+                      Cancelado
+                    </span>
+                  </td>
+                </tr>
+                <tr className="w-full flex justify-between items-center py-5 border-b border-gray-500/20  [&>td]:text-left">
+                  <td className="w-2/5">Cristhian Rodríguez</td>
+                  <td className="w-1/5 font-light">20.10.2024</td>
+                  <td className="w-1/5 font-light">$ 1500.20</td>
+                  <td className="w-1/5 font-light ">
+                    <span className="px-2 py-1 bg-red-400 text-red-800 rounded-md">
+                      Rechazado
+                    </span>
+                  </td>
+                </tr>
+                <tr className="w-full flex justify-between items-center py-5 border-b border-gray-500/20  [&>td]:text-left">
+                  <td className="w-2/5">Cristhian Rodríguez</td>
+                  <td className="w-1/5 font-light">20.10.2024</td>
+                  <td className="w-1/5 font-light">$ 1500.20</td>
+                  <td className="w-1/5 font-light ">
+                    <span className="px-2 py-1 bg-yellow-300 text-yellow-800 rounded-md">
+                      Pendiente
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot className="py-2 h-full flex items-center justify-center ">
+                <span className="text-gray-400">Últimas 5 transacciones</span>
+              </tfoot>
+            </table>
           </div>
           <div className="border border-gray-500/20 rounded-lg"></div>
         </div>

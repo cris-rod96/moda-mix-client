@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BiCart, BiSearchAlt, BiUser } from 'react-icons/bi';
+import { BiCart, BiRefresh, BiSearchAlt, BiUser } from 'react-icons/bi';
 import { FaPowerOff, FaUser } from 'react-icons/fa';
 import {
   MdAttachMoney,
@@ -12,7 +12,114 @@ import SpanishFlag from '../../assets/icon/SpanishFlag';
 import { HiArrowTrendingUp } from 'react-icons/hi2';
 import CountUp from 'react-countup';
 
+import ApexCharts from 'react-apexcharts';
+import { LuClock } from 'react-icons/lu';
+
 const Dashboard = () => {
+  const data = {
+    categories: [
+      'Lunes',
+      'Martes',
+      'Miércoles',
+      'Jueves',
+      'Viernes',
+      'Sábado',
+      'Domingo',
+    ],
+    series: [10, 15, 8, 20, 13, 9, 12],
+  };
+  const chartOptions = {
+    chart: {
+      type: 'bar',
+      toolbar: {
+        show: false,
+      },
+    },
+    plotOptions: {
+      bar: {
+        dataLabels: {
+          position: 'top', // coloca las etiquetas en la parte superior de las columnas
+        },
+      },
+    },
+    dataLabels: {
+      enabled: true,
+      formatter: (val) => `${val}`, // formateador de etiquetas de datos
+      offsetY: -20,
+      style: {
+        fontSize: '12px',
+        colors: ['#000000'], // etiquetas en negro
+      },
+    },
+    xaxis: {
+      categories: data.categories,
+      position: 'top',
+      labels: {
+        offsetY: -2,
+        style: {
+          colors: ['#000000'], // etiquetas del eje X en negro
+        },
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      crosshairs: {
+        fill: {
+          type: 'gradient',
+          gradient: {
+            colorFrom: '#000000',
+            colorTo: '#000000',
+            stops: [0, 100],
+            opacityFrom: 0.4,
+            opacityTo: 0.5,
+          },
+        },
+      },
+      tooltip: {
+        enabled: true,
+        offsetY: -35,
+      },
+    },
+    fill: {
+      colors: ['#227679'], // color de las columnas
+    },
+    yaxis: {
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      labels: {
+        show: false,
+        formatter: (val) => `${val}`,
+      },
+    },
+    title: {
+      text: 'Estadísticas Semanales de Usuarios Registrados',
+      floating: true,
+      offsetY: 280,
+      align: 'center',
+      style: {
+        color: '#000000', // color del título en negro
+        fontSize: '12px',
+      },
+    },
+    grid: {
+      borderColor: '#e0e0e0', // color de las líneas de la cuadrícula en gris claro
+    },
+  };
+
+  const chartSeries = [
+    {
+      name: 'Registros',
+      data: data.series,
+      color: '#227679',
+    },
+  ];
   const [showMenu, setShowMenu] = useState(false);
   const [switchLanguage, setSwitchLanguage] = useState(false);
 
@@ -40,7 +147,7 @@ const Dashboard = () => {
         if (switchLanguage) closeSwitchLanguage();
       }}
     >
-      <header className="w-full h-20 border-b border-gray-500/10 flex items-center justify-between px-10 relative gap-5 bg-white">
+      <header className="h-20 border-b border-gray-500/10 flex items-center justify-between px-10 relative gap-5 bg-white">
         <div className="flex items-center border border-gray-500/10 focus-within:border-gray-500/20 rounded-lg overflow-hidden">
           <div className="w-10 flex items-center justify-center ">
             <BiSearchAlt size={24} className="text-gray-300" />
@@ -271,7 +378,113 @@ const Dashboard = () => {
               </tfoot>
             </table>
           </div>
-          <div className="border border-gray-500/20 rounded-lg"></div>
+          <div className="border border-gray-500/20 rounded-lg h-full overflow-y-auto bg-white">
+            <header className="flex justify-center items-center px-10 pt-5">
+              <h3 className="font-bold uppercase text-lg">
+                Productos más vendidos
+              </h3>
+            </header>
+
+            {/* Table */}
+            <table className="flex flex-col px-10 pt-2">
+              <thead className="w-full">
+                <tr className="w-full flex justify-between items-center border-b border-gray-500/20 py-5 [&>th]:text-th [&>th]:font-light [&>th]:text-left">
+                  <th className="w-2/4">Nombre</th>
+                  <th className="w-1/4">Precio</th>
+                  <th className="w-1/4">Unidades vendidas</th>
+                </tr>
+              </thead>
+              <tbody className="w-full">
+                <tr className="w-full flex justify-between items-center py-5 border-b border-gray-500/20  [&>td]:text-left">
+                  <td className="w-2/4 flex items-center gap-2">
+                    <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-gray-500/20">
+                      <img
+                        src="https://novomodecol.vtexassets.com/arquivos/ids/377224-800-auto?v=638240221409030000&width=800&height=auto&aspect=true"
+                        alt=""
+                        className="absolute w-full h-full object-cover"
+                      />
+                    </div>
+                    <span>Chaqueta hombre color negro</span>
+                  </td>
+                  <td className="w-1/4 font-light">$ 1500.20</td>
+                  <td className="w-1/4 font-light">100</td>
+                </tr>
+                <tr className="w-full flex justify-between items-center py-5 border-b border-gray-500/20  [&>td]:text-left">
+                  <td className="w-2/4 flex items-center gap-2">
+                    <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-gray-500/20">
+                      <img
+                        src="https://novomodecol.vtexassets.com/arquivos/ids/377224-800-auto?v=638240221409030000&width=800&height=auto&aspect=true"
+                        alt=""
+                        className="absolute w-full h-full object-cover"
+                      />
+                    </div>
+                    <span>Chaqueta hombre color negro</span>
+                  </td>
+                  <td className="w-1/4 font-light">$ 1500.20</td>
+                  <td className="w-1/4 font-light">100</td>
+                </tr>
+                <tr className="w-full flex justify-between items-center py-5 border-b border-gray-500/20  [&>td]:text-left">
+                  <td className="w-2/4 flex items-center gap-2">
+                    <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-gray-500/20">
+                      <img
+                        src="https://novomodecol.vtexassets.com/arquivos/ids/377224-800-auto?v=638240221409030000&width=800&height=auto&aspect=true"
+                        alt=""
+                        className="absolute w-full h-full object-cover"
+                      />
+                    </div>
+                    <span>Chaqueta hombre color negro</span>
+                  </td>
+                  <td className="w-1/4 font-light">$ 1500.20</td>
+                  <td className="w-1/4 font-light">100</td>
+                </tr>
+                <tr className="w-full flex justify-between items-center py-5 border-b border-gray-500/20  [&>td]:text-left">
+                  <td className="w-2/4 flex items-center gap-2">
+                    <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-gray-500/20">
+                      <img
+                        src="https://novomodecol.vtexassets.com/arquivos/ids/377224-800-auto?v=638240221409030000&width=800&height=auto&aspect=true"
+                        alt=""
+                        className="absolute w-full h-full object-cover"
+                      />
+                    </div>
+                    <span>Chaqueta hombre color negro</span>
+                  </td>
+                  <td className="w-1/4 font-light">$ 1500.20</td>
+                  <td className="w-1/4 font-light">100</td>
+                </tr>
+              </tbody>
+              <tfoot className="py-2 h-full flex items-center justify-center ">
+                <span className="text-gray-400">Últimas 5 transacciones</span>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 gap-5">
+          <article className="relative h-96 border px-5 rounded-lg group flex flex-col justify-between">
+            <div>
+              <div className="w-full h-80 mx-auto relative -top-4 rounded-xl flex flex-col justify-end items-center">
+                {/* Graphic */}
+                <div className="absolute w-full h-full bg-white rounded-xl transition-all duration-300 group-hover:-translate-y-8 cursor-pointer">
+                  <ApexCharts
+                    options={chartOptions}
+                    series={chartSeries}
+                    type="bar"
+                    height={300}
+                    width="100%"
+                  />
+                </div>
+
+                <button className="text-primary">
+                  <BiRefresh size={22} />
+                </button>
+              </div>
+            </div>
+            <footer className="border-t border-gray-500/20 py-3 w-full flex items-center gap-1 text-gray-400">
+              <LuClock size={14} />
+              <p className="text-[14px]">Actualizado hace 10 minutos</p>
+            </footer>
+          </article>
         </div>
       </section>
     </main>
